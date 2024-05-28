@@ -28,7 +28,7 @@ def read_root():
 
 @app.get("/resultados")
 def resultados():
-    return consultarDB("SELECT * FROM view_players_with_score")
+    return consultarDB("SELECT * FROM view_results_with_names")
 
 
 def consultarDB(sql_sentence):
