@@ -2,6 +2,8 @@
 from fastapi import FastAPI
 import uvicorn
 import psycopg2
+import os
+
 
 
 if __name__ == "__main__":
@@ -10,7 +12,14 @@ if __name__ == "__main__":
 app = FastAPI()
 
 
-connection_string= f"host={process.env.DB_HOST} port={process.env.DB_PORT} user={process.env.DB_USERNAME} password={process.env.DB_PASSWORD} dbname={process.env.DB_DATABASE}" # type: ignore
+host = os.getenv("DB_HOST")
+port = os.getenv("DB_PORT")
+username = os.getenv("DB_USERNAME")
+password = os.getenv("DB_PASSWORD")
+database = os.getenv("DB_DATABASE")
+
+
+connection_string= f"host={host} port={port} user={username} password={password} dbname={database}" # type: ignore
 conn = psycopg2.connect(connection_string)
 
 @app.get("/")
