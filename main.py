@@ -3,6 +3,8 @@ from fastapi import FastAPI
 import uvicorn
 import psycopg2
 import os
+from psycopg2.extras import RealDictCursor
+
 
 
 
@@ -32,7 +34,7 @@ def resultados():
 
 
 def consultarDB(sql_sentence):
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute(sql_sentence)
     return cur.fetchall()
 
