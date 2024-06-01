@@ -31,8 +31,8 @@ def resultados():
     return consultarDB("SELECT * FROM view_results_with_names")
 
 @app.get("/res")
-def res():
-    return consultarAsyncDB("SELECT * FROM view_results_with_names")
+async def res():
+    return await consultarAsyncDB("SELECT * FROM view_results_with_names")
 
 
 #Conexion Database
